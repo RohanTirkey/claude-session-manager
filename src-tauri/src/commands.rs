@@ -1,5 +1,6 @@
 use crate::session::Session;
 use crate::db::Database;
+use crate::git::{self, Branch, Worktree};
 use std::sync::Mutex;
 use tauri::State;
 use anyhow::Result;
@@ -92,10 +93,26 @@ pub async fn get_sessions_by_project(
         .map_err(|e| e.to_string())
 }
 
+// Git commands
+
 #[tauri::command]
-pub async fn get_git_branches(repo_path: String) -> Result<Vec<String>, String> {
-    // TODO: Implement using git2-rs wrapper
-    Ok(vec![])
+pub async fn get_git_branches(repo_path: String) -> Result<Vec<Branch>, String> {
+    git::list_branches(&repo_path).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub async fn create_git_branch(repo_path: String, branch_name: String) -> Result<Branch, String> {
+    git::create_branch(&repo_path, &branch_name).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub async fn delete_git_branch(repo_path: String, branch_name: String) -> Result<(), String> {
+    git::delete_branch(&repo_path, &branch_name).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub async fn checkout_git_branch(repo_path: String, branch_name: String) -> Result<(), String> {
+    git::checkout_branch(&repo_path, &branch_name).map_err(|e| e.to_string())
 }
 
 #[tauri::command]
@@ -103,13 +120,21 @@ pub async fn create_worktree(
     repo_path: String,
     branch: String,
     path: String,
-) -> Result<(), String> {
-    // TODO: Implement using git2-rs wrapper
-    Ok(())
+) -> Result<Worktree, String> {
+    git::create_worktree(&repo_path, &path, &branch).map_err(|e| e.to_string())
 }
 
 #[tauri::command]
-pub async fn delete_worktree(path: String) -> Result<(), String> {
-    // TODO: Implement using git2-rs wrapper
-    Ok(())
+pub async fn delete_worktree(repo_path: String, worktree_name: String) -> Result<(), String> {
+    git::delete_worktree(&repo_path, &worktree_name).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub async fn list_worktrees(repo_path: String) -> Result<Vec<Worktree>, String> {
+    git::list_worktrees(&repo_path).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub async fn discover_git_repos(path: String) -> Result<Vec<git::GitRepo>, String> {
+    git::discover_repos(&path).map_err(|e| e.to_string())
 }

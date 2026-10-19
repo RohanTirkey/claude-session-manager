@@ -30,6 +30,7 @@ anyhow = "1.0"
 thiserror = "1.0"
 uuid = { version = "1.6", features = ["v4"] }
 dirs = "5.0"
+git2 = "0.18"
 
 [features]
 default = [ "custom-protocol" ]

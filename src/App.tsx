@@ -3,6 +3,7 @@ import "./App.css"
 import { useSessions } from "./hooks/useSessions"
 import { SessionList } from "./components/SessionList"
 import { CreateSession } from "./components/CreateSession"
+import { GitTools } from "./components/GitTools"
 
 function App() {
   const { sessions, loading, error, createSession, deleteSession, updateSession } = useSessions()
@@ -63,10 +64,7 @@ function App() {
 
           {activeTab === "git" && (
             <div className="tab-content">
-              <div className="placeholder">
-                <h2>Git Tools</h2>
-                <p>Git integration coming soon...</p>
-              </div>
+              <GitTools />
             </div>
           )}
         </div>
@@ -76,4 +74,5 @@ function App() {
 }
 
 export default App
+
 

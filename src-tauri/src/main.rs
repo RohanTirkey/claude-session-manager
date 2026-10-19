@@ -25,6 +25,7 @@ fn main() {
       Ok(())
     })
     .invoke_handler(tauri::generate_handler![
+      // Session commands
       commands::init_db,
       commands::get_sessions,
       commands::create_session,
@@ -33,9 +34,15 @@ fn main() {
       commands::update_session,
       commands::save_session_context,
       commands::get_sessions_by_project,
+      // Git commands
       commands::get_git_branches,
+      commands::create_git_branch,
+      commands::delete_git_branch,
+      commands::checkout_git_branch,
       commands::create_worktree,
       commands::delete_worktree,
+      commands::list_worktrees,
+      commands::discover_git_repos,
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

@@ -1,0 +1,146 @@
+.git-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.git-section {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.git-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section-header h3 {
+  margin: 0;
+}
+
+.git-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.git-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  font-size: 0.95rem;
+  font-family: monospace;
+  transition: all 0.2s ease;
+}
+
+.git-input:focus {
+  outline: none;
+  border-color: #646cff;
+  background-color: rgba(100, 108, 255, 0.1);
+}
+
+.git-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: rgba(100, 108, 255, 0.05);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.branches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.branch-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.02);
+  transition: all 0.2s ease;
+}
+
+.branch-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.branch-item.current {
+  background-color: rgba(100, 108, 255, 0.1);
+  border-color: #646cff;
+}
+
+.branch-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  background-color: #646cff;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.branch-name {
+  font-family: monospace;
+  font-size: 0.95rem;
+  word-break: break-all;
+}
+
+.error-banner {
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: rgba(255, 100, 100, 0.1);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  color: #ff9999;
+}
+
+@media (max-width: 768px) {
+  .git-input-group {
+    flex-direction: column;
+  }
+
+  .git-input-group .btn {
+    width: 100%;
+  }
+
+  .branch-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .branch-item .btn {
+    width: 100%;
+  }
+}
